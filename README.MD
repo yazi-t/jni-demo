@@ -10,14 +10,14 @@ Main class of this module calls native library _native.dll_ to print _"hello wor
 
 #### Generating header files
 JDK includes tools to generate header files for the native method interface.
-#####How to generate
+##### How to generate
 > in java 8 and prior using _javah_ command and _java -h_in java 9 and higher.
 
 Native library should be included in the _java.library.path_ to link the library at the run time. Java path is defaulted to system PATH variable
 if not explicitly set.
 
 This demo can be run using script-run.bat
-#####Steps
+##### Steps
 1. Run `cd /jni-hello`
 2. Run `./script-run.bat` from cmd
 
@@ -28,12 +28,12 @@ g++/gcc installation is a requirement to this plugin. Native library implementat
 
 _javah_ goal in the maven plugin (above mentioned) has been used to generate the header files of the native code.
 
-#####DLL Extractor
+##### DLL Extractor
 This project bundles native library into the jar file generated. `DLLLoader` class is used to extract native library from jar to directory jar is located 
 since Java  doesn't provide a mechanism to load a native library from the jar itself.
 > Note: Currently as the name implies this class supports dll extension in windows environment only. Can be modified to extract linux `.so` files with minimal set of changes. 
 
-#####Steps
+##### Steps
 1. Run `mvn clean install` from the project root
 2. Run `cd /java-hash` 
 3. Run `./script-run.bat` from cmd
@@ -46,7 +46,7 @@ Cache is implemented in C++ using a map and can be stores the `jobject` as a glo
 Native memory cache implementation is an important topic in the java ecosystem since on heap cache increases the heap size and
 can be a cause for long GC cycles. Since the native memory management is done manually this resolves that problem.
 
-#####Steps
+##### Steps
 1. Run `mvn clean install` from the project root
 2. Run `cd java-cache-caller`
 3. Run `./script-run.bat` from cmd
@@ -57,7 +57,7 @@ can be a cause for long GC cycles. Since the native memory management is done ma
 3. This project supports only `dll` libraries and windows environment, but easily can be modified to be used in the linux environment.
 4. g++/gcc compiler
 
-#####Install gcc/g++ compiler
+##### Install gcc/g++ compiler
 > In windows environment mingw can be used to compile c/c++ programs. [mingw-w64 for 64bit envirnment](http://mingw-w64.org/doku.php) or [mingw for 32bit environment](http://www.mingw.org/)
 
 > In linux environment to install run `sudo apt install gcc` `sudo apt install g++`
